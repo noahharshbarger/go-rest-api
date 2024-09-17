@@ -1,0 +1,94 @@
+{
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample API for managing tasks.",
+        "title": "Tasks API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "/",
+    "paths": {
+        "/tasks": {
+            "get": {
+                "description": "Get all tasks",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Get all tasks",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/main.Task"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a new task",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Create a new task",
+                "parameters": [
+                    {
+                        "description": "Task",
+                        "name": "task",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.Task"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Task"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.Task": {
+            "description": "Task represents a task object",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
